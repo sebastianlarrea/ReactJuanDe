@@ -3,7 +3,7 @@ import { BASE_URL } from '../constants'
 
 const CHARACTERS_URL = `${BASE_URL}/character`
 
-async function getCharacters(id = '') {
+async function getCharacters() {
     return axios.get(CHARACTERS_URL).then(response =>
         response.data.results.map(character => ({
             id: character.id,
@@ -13,7 +13,8 @@ async function getCharacters(id = '') {
             name: character.name,
             origin: character.origin.name,
             species: character.species,
-            status: character.status
+            status: character.status,
+            location: character.location.name
         }))
     )
 }
